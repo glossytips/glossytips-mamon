@@ -900,21 +900,30 @@
             faqItem.classList.toggle('active');
         }
 
-        // AUTO-SCANNER: "Makeover Video X" for videos, Clean titles for photos
+        // PERFECT ASCENDING ORDER LOADER FOR VIDEOS & PHOTOS
         document.addEventListener("DOMContentLoaded", function () {
             const videoRow = document.getElementById('video-gallery-row');
             const imageRow = document.getElementById('image-gallery-row');
-            const maxFilesToCheck = 30; // Scans up to 30 files automatically
+            const maxFilesToCheck = 30;
 
-            // Cleans file names into pretty titles for photos
-            function formatFileNameToTitle(fileName) {
-                let nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.')) || fileName;
-                return nameWithoutExt
-                    .replace(/[-_]/g, ' ')
-                    .replace(/\b\w/g, char => char.toUpperCase());
+            let loadedVideos = [];
+            let loadedImages = [];
+            let checkedVideos = 0;
+            let checkedImages = 0;
+
+            function checkRenderCompletion() {
+                // Once all checks are done, sort both arrays in strict ascending order (1, 2, 3...)
+                if (checkedVideos === maxFilesToCheck) {
+                    loadedVideos.sort((a, b) => a.index - b.index);
+                    loadedVideos.forEach(item => videoRow.appendChild(item.card));
+                }
+                if (checkedImages === maxFilesToCheck) {
+                    loadedImages.sort((a, b) => a.index - b.index);
+                    loadedImages.forEach(item => imageRow.appendChild(item.card));
+                }
             }
 
-            // 1. Auto-Scan Videos (nail1.mp4 -> "Makeover Video 1", etc.)
+            // 1. Scan Videos (nail1.mp4, nail2.mp4...)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const videoUrl = `nail${index}.mp4`;
@@ -932,31 +941,42 @@
                                 <span class="insta-title">${videoTitle}</span>
                             </div>
                         `;
-                        videoRow.appendChild(card);
+                        loadedVideos.push({ index: index, card: card });
+                        checkedVideos++;
+                        checkRenderCompletion();
+                    };
+                    video.onerror = function() {
+                        checkedVideos++;
+                        checkRenderCompletion();
                     };
                 })(i);
             }
 
-            // 2. Auto-Scan Photos (nail1.jpg, nail2.jpg...) -> Clean Filename title
+            // 2. Scan Photos (nail1.jpg, nail2.jpg...)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const imageUrl = `nail${index}.jpg`;
                     const img = new Image();
                     img.onload = function() {
-                        const cleanTitle = formatFileNameToTitle(imageUrl);
+                        const imageTitle = `Nail Design ${index}`;
                         const card = document.createElement('div');
                         card.className = 'insta-card';
                         card.innerHTML = `
                             <div class="insta-media-container">
-                                <img src="${imageUrl}" alt="${cleanTitle}">
+                                <img src="${imageUrl}" alt="${imageTitle}">
                             </div>
                             <div class="insta-card-footer">
-                                <span class="insta-title">${cleanTitle}</span>
+                                <span class="insta-title">${imageTitle}</span>
                             </div>
                         `;
-                        imageRow.appendChild(card);
+                        loadedImages.push({ index: index, card: card });
+                        checkedImages++;
+                        checkRenderCompletion();
                     };
-                    img.src = imageUrl;
+                    img.onerror = function() {
+                        checkedImages++;
+                        checkRenderCompletion();
+                    };
                 })(i);
             }
         });
