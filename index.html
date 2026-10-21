@@ -863,20 +863,23 @@
             faqItem.classList.toggle('active');
         }
 
-        // CLEAN DYNAMIC MEDIA LOADER WITH CURATED TITLES
+        // SMART DYNAMIC MEDIA LOADER WITH "MAKEOVER" GENERATOR
         document.addEventListener("DOMContentLoaded", function () {
             const galleryGrid = document.getElementById('dynamic-gallery');
-            const maxFilesToCheck = 15;
+            const maxFilesToCheck = 20; // Scans up to nail20.mp4 and nail20.jpg
 
-            // Curated Title Lists
-            const videoTitles = [
-                "Festive Glam & Glitter",
-                "Pastel Gel Transformation",
-                "3D Charm Artistry",
-                "Studio Process Reel",
-                "Glitter Overlay Showcase"
-            ];
+            // Word Pools for Dynamic Video Titles
+            const videoPrefixes = ["Festive", "Royal", "Custom", "Luxury", "Glitter", "Minimalist", "3D Charm", "Chic"];
+            const videoStyles = ["Gel Glam", "Bridal Art", "Pastel Style", "Acrylic Finish", "Studio Polish", "Nail Elegance"];
 
+            // Generates dynamic wording ending with 'Makeover'
+            function generateVideoTitle(index) {
+                const prefix = videoPrefixes[(index - 1) % videoPrefixes.length];
+                const style = videoStyles[(index - 1) % videoStyles.length];
+                return `${prefix} ${style} Makeover`;
+            }
+
+            // Image Titles List
             const imageTitles = [
                 "Custom Gel Artistry",
                 "Classic French Elegance",
@@ -885,7 +888,7 @@
                 "Minimalist Nude Art"
             ];
 
-            // 1. Scan for Videos (nail1.mp4, nail2.mp4...)
+            // 1. Scan & Load Videos dynamically (nail1.mp4, nail2.mp4, nail3.mp4...)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 const videoUrl = `nail${i}.mp4`;
                 const req = new XMLHttpRequest();
@@ -893,7 +896,7 @@
                 try {
                     req.send();
                     if (req.status === 200) {
-                        const title = videoTitles[i - 1] || "Signature Reel Showcase";
+                        const dynamicTitle = generateVideoTitle(i);
                         const card = document.createElement('div');
                         card.className = 'insta-card';
                         card.innerHTML = `
@@ -901,7 +904,7 @@
                                 <video src="${videoUrl}" controls muted playsinline></video>
                             </div>
                             <div class="insta-card-footer">
-                                <span class="insta-title">${title}</span>
+                                <span class="insta-title">${dynamicTitle}</span>
                             </div>
                         `;
                         galleryGrid.appendChild(card);
@@ -909,7 +912,7 @@
                 } catch(e) {}
             }
 
-            // 2. Scan for Images (nail1.jpg, nail2.jpg...)
+            // 2. Scan & Load Images dynamically (nail1.jpg, nail2.jpg...)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 const imageUrl = `nail${i}.jpg`;
                 const img = new Image();
