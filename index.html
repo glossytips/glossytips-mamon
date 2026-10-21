@@ -380,7 +380,7 @@
             margin: 0.2rem 0;
         }
 
-        /* GALLERY / LOOKBOOK - RICH MEDIA CARDS */
+        /* GALLERY / LOCAL PHOTO GRID */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -400,21 +400,15 @@
             border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: var(--shadow-soft);
-            transition: transform 0.3s;
             display: flex;
             flex-direction: column;
         }
-
-        .insta-card:hover { transform: translateY(-2px); }
 
         .insta-media-container {
             position: relative;
             width: 100%;
             height: 160px;
-            background: linear-gradient(135deg, #F3D9E2 0%, #E8B4C8 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--bg-secondary);
             overflow: hidden;
         }
 
@@ -422,21 +416,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.85;
-        }
-
-        .play-overlay {
-            position: absolute;
-            background: rgba(43, 33, 41, 0.6);
-            color: #FFF;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .insta-card-footer {
@@ -459,8 +438,9 @@
 
         .btn-insta {
             display: inline-block;
-            background: var(--text-dark);
-            color: #FFF !important;
+            background: var(--accent-soft);
+            color: var(--text-dark) !important;
+            border: 1px solid var(--accent-rose);
             padding: 0.25rem 0.5rem;
             border-radius: 50px;
             font-size: 0.62rem;
@@ -696,73 +676,43 @@
         </div>
     </section>
 
-    <!-- GALLERY / LOOKBOOK (Rich Media Preview Cards) -->
+    <!-- GALLERY / LOOKBOOK (Using Local Image File) -->
     <section id="gallery" style="background: var(--bg-secondary);">
         <div class="section-header">
-            <h2>Live Instagram Lookbook</h2>
-            <p>Real work posted directly from @glossytips_by_arpita</p>
+            <h2>Lookbook Portfolio</h2>
+            <p>Stunning nail artistry by Arpita Patra</p>
         </div>
         <div class="gallery-grid">
+            <!-- Card using your uploaded nail1.jpg file -->
             <div class="insta-card">
                 <div class="insta-media-container">
-                    <i class="fab fa-instagram" style="font-size: 2.5rem; color: #E0A0A0;"></i>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                    <img src="nail1.jpg" alt="Nail Art Design by Arpita">
                 </div>
                 <div class="insta-card-footer">
-                    <span class="insta-title">Glitter & Chrome Art</span>
-                    <a href="https://www.instagram.com/reel/DeunKUFR3zU/" target="_blank" class="btn-insta">Watch Reel</a>
+                    <span class="insta-title">Custom Gel Art</span>
+                    <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20this%20design!" target="_blank" class="btn-insta">Book This Design</a>
                 </div>
             </div>
 
+            <!-- Placeholder Card 2 (Ready for nail2.jpg later) -->
             <div class="insta-card">
-                <div class="insta-media-container">
-                    <i class="fab fa-instagram" style="font-size: 2.5rem; color: #E0A0A0;"></i>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Soft Gel Transformation</span>
-                    <a href="https://www.instagram.com/reel/Det8Np-hVL5/" target="_blank" class="btn-insta">Watch Reel</a>
-                </div>
-            </div>
-
-            <div class="insta-card">
-                <div class="insta-media-container">
-                    <i class="fab fa-instagram" style="font-size: 2.5rem; color: #E0A0A0;"></i>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Bridal Nail Art Reveal</span>
-                    <a href="https://www.instagram.com/reel/Det24zrt4sl/" target="_blank" class="btn-insta">Watch Reel</a>
-                </div>
-            </div>
-
-            <div class="insta-card">
-                <div class="insta-media-container" style="background: linear-gradient(135deg, #FFFDF9 0%, #F0D5E1 100%);">
-                    <i class="fas fa-camera" style="font-size: 2rem; color: #E0A0A0;"></i>
+                <div class="insta-media-container" style="display:flex; align-items:center; justify-content:center;">
+                    <i class="fas fa-camera" style="font-size: 2rem; color: var(--accent-rose);"></i>
                 </div>
                 <div class="insta-card-footer">
                     <span class="insta-title">Classic French Tips</span>
-                    <a href="https://www.instagram.com/p/Detx64fgR0i/" target="_blank" class="btn-insta">View Post</a>
+                    <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20this%20design!" target="_blank" class="btn-insta">Book This Design</a>
                 </div>
             </div>
 
+            <!-- Placeholder Card 3 (Ready for nail3.jpg later) -->
             <div class="insta-card">
-                <div class="insta-media-container" style="background: linear-gradient(135deg, #FFFDF9 0%, #F0D5E1 100%);">
-                    <i class="fas fa-camera" style="font-size: 2rem; color: #E0A0A0;"></i>
+                <div class="insta-media-container" style="display:flex; align-items:center; justify-content:center;">
+                    <i class="fas fa-camera" style="font-size: 2rem; color: var(--accent-rose);"></i>
                 </div>
                 <div class="insta-card-footer">
-                    <span class="insta-title">Rose Gold Overlay</span>
-                    <a href="https://www.instagram.com/p/DetuWQmAVfq/" target="_blank" class="btn-insta">View Post</a>
-                </div>
-            </div>
-
-            <div class="insta-card">
-                <div class="insta-media-container" style="background: linear-gradient(135deg, #FFFDF9 0%, #F0D5E1 100%);">
-                    <i class="fas fa-camera" style="font-size: 2rem; color: #E0A0A0;"></i>
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Lavender Aesthetic Set</span>
-                    <a href="https://www.instagram.com/p/Deq0uBhgfKW/" target="_blank" class="btn-insta">View Post</a>
+                    <span class="insta-title">Bridal Glam Set</span>
+                    <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20this%20design!" target="_blank" class="btn-insta">Book This Design</a>
                 </div>
             </div>
         </div>
