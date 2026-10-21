@@ -900,13 +900,13 @@
             faqItem.classList.toggle('active');
         }
 
-        // FULLY AUTOMATED DYNAMIC MEDIA LOADER (VIDEOS & PHOTOS)
+        // FULLY AUTOMATED "SET IT AND FORGET IT" MEDIA LOADER
         document.addEventListener("DOMContentLoaded", function () {
             const videoRow = document.getElementById('video-gallery-row');
             const imageRow = document.getElementById('image-gallery-row');
-            const maxFilesToCheck = 20;
+            const maxFilesToCheck = 30; // Scans nail1 to nail30 automatically
 
-            // Helper to clean file names into pretty UI titles
+            // Cleans file names into pretty titles
             function formatFileNameToTitle(fileName) {
                 let nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.')) || fileName;
                 return nameWithoutExt
@@ -914,7 +914,7 @@
                     .replace(/\b\w/g, char => char.toUpperCase());
             }
 
-            // 1. Fully Automated Video Scanner (nail1.mp4, nail2.mp4...) -> Appends " Makeover"
+            // 1. Auto-Scan Videos (nail1.mp4, nail2.mp4...) -> Filename + Makeover
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const videoUrl = `nail${index}.mp4`;
@@ -938,30 +938,7 @@
                 })(i);
             }
 
-            // 2. Fully Automated Photo Scanner (Supports nail1.jpg, nail2.jpg, OR descriptive names like "Soft pink nude nails.jpg")
-            const customPhotoNames = ["Soft pink nude nails.jpg"]; // Add any custom descriptive photo filenames here if needed
-            
-            // Scan custom descriptive photos first
-            customPhotoNames.forEach(function(imageUrl) {
-                const img = new Image();
-                img.onload = function() {
-                    const cleanTitle = formatFileNameToTitle(imageUrl);
-                    const card = document.createElement('div');
-                    card.className = 'insta-card';
-                    card.innerHTML = `
-                        <div class="insta-media-container">
-                            <img src="${imageUrl}" alt="${cleanTitle}">
-                        </div>
-                        <div class="insta-card-footer">
-                            <span class="insta-title">${cleanTitle}</span>
-                        </div>
-                    `;
-                    imageRow.appendChild(card);
-                };
-                img.src = imageUrl;
-            });
-
-            // Scan sequential photos (nail1.jpg, nail2.jpg, nail3.jpg...) automatically
+            // 2. Auto-Scan Photos (nail1.jpg, nail2.jpg...) -> Clean Filename title
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const imageUrl = `nail${index}.jpg`;
