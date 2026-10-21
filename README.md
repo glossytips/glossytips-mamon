@@ -1,2 +1,0 @@
-# glossytips-mamon
-Mamon nails
