@@ -473,6 +473,63 @@
         .single-review p { font-size: 0.8rem; margin-bottom: 0.25rem; font-style: italic; }
         .single-review .reviewer { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); }
 
+        /* FAQ SECTION */
+        .faq-container {
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--accent-rose);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: var(--bg-main);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            padding: 0 1.2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0.8rem 1.2rem 1.1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
         /* LOCATION */
         .location-container {
             background: var(--bg-secondary);
@@ -514,6 +571,7 @@
             <li><a href="#estimator" onclick="closeMenu()">Price Estimator</a></li>
             <li><a href="#gallery" onclick="closeMenu()">Lookbook</a></li>
             <li><a href="#reviews" onclick="closeMenu()">Reviews</a></li>
+            <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
             <li><a href="#location" onclick="closeMenu()">Location</a></li>
             <li>
                 <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20a%20nail%20appointment!" target="_blank" class="btn-wp">
@@ -659,7 +717,7 @@
         </div>
     </section>
 
-    <!-- GALLERY / LOOKBOOK (Updated Headings & Titles) -->
+    <!-- GALLERY / LOOKBOOK (3 Videos & 3 Photos) -->
     <section id="gallery" style="background: var(--bg-secondary);">
         <div class="section-header">
             <h2>Lookbook Portfolio</h2>
@@ -728,7 +786,7 @@
         </div>
     </section>
 
-    <!-- REVIEWS SECTION (More Reviews Added) -->
+    <!-- REVIEWS SECTION -->
     <section id="reviews">
         <div class="section-header">
             <h2>Client Testimonials</h2>
@@ -754,6 +812,55 @@
                     <div class="single-review"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Booked Arpita for my festive nails during Pujo prep. Absolutely stunning glitter finish and very affordable!"</p><div class="reviewer">Tiyasa Roy — Jadavpur</div></div>
                     <div class="single-review"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super hygienic space in Patuli. Loved how comfortable she made me feel!"</p><div class="reviewer">Riya Banerjee — Jadavpur</div></div>
                     <div class="single-review"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Got my bridal nails done from Glossy Tips. Everyone complimented the 3D charms!"</p><div class="reviewer">Ananya Sen — Garia</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
+    <section id="faq" style="background: var(--bg-secondary);">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know before your appointment</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How long do gel extensions usually last?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    With proper aftercare, soft gel and acrylic extensions usually last between 3 to 4 weeks before needing an infill or safe removal.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Do I need to book an appointment in advance?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Yes! To give every client personalized attention and ensure 100% sanitized tools, appointments must be booked prior via WhatsApp.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Are the nail products safe for my natural nails?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Absolutely. We use high-quality, MMA-free gel products. When applied and removed professionally, your natural nails remain safe and healthy.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Can I show my own custom design reference?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Yes! You can share any photo or Pinterest/Instagram reference on WhatsApp before your appointment, and we will customize it for you.
                 </div>
             </div>
         </div>
@@ -807,6 +914,11 @@
             if(!name || !comment) { alert('Please enter your name and review comment.'); return; }
             let message = `Hi Arpita! Review for Glossy Tips:\n\nName: ${name}\nService: ${service || 'Nail Extensions'}\nReview: ${comment}`;
             window.open(`https://wa.me/916291187416?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            faqItem.classList.toggle('active');
         }
     </script>
 </body>
