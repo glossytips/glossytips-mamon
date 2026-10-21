@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossy Tips by Arpita Patra | Certified Nail Artist in Patuli, Kolkata</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           GEN-Z SOFT AESTHETIC PALETTE & RESETS
+           ========================================================================== */
+        :root {
+            --bg-main: #FFFDF9;           /* Creamy Warm White */
+            --bg-secondary: #F8E8EE;      /* Light Soft Lavender/Pink */
+            --accent-soft: #FFD6E8;       /* Gen-Z Soft Blush Pink */
+            --accent-rose: #E0A0A0;       /* Muted Rose Gold Accent */
+            --accent-hover: #F2A9C4;      /* Hover Pink */
+            --text-dark: #2B2129;         /* Deep Soft Plum/Charcoal (Easy Readability) */
+            --text-muted: #6B5B68;        /* Muted Secondary Text */
+            --card-bg: #FFFFFF;           /* Pure White Card Base */
+            --border-color: #F0D5E1;     /* Soft Pastel Border */
+            --shadow-soft: 0 8px 24px rgba(224, 160, 160, 0.12);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================================================
+           HEADER & NAVIGATION
+           ========================================================================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 253, 249, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-dark);
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-rose);
+        }
+
+        .btn-wp {
+            background: #25D366;
+            color: #FFF !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .btn-wp:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding: 4rem 5% 3rem;
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-secondary) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--text-dark);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent-soft);
+            color: var(--text-dark);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid var(--accent-rose);
+            transition: all 0.3s;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #FFF;
+            color: var(--text-dark);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-rose);
+            background: var(--bg-main);
+        }
+
+        /* ==========================================================================
+           SECTION COMMONS
+           ========================================================================== */
+        section {
+            padding: 4rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           WHY CHOOSE ARPITA (TRUST BADGES)
+           ========================================================================== */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .trust-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-50px);
+            border-color: var(--accent-rose);
+        }
+
+        .trust-card i {
+            font-size: 2rem;
+            color: var(--text-dark);
+            background: var(--bg-secondary);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .trust-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .trust-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           SERVICES & COMBOS
+           ========================================================================== */
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .combo-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .combo-card.popular {
+            border-color: var(--accent-rose);
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-secondary) 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-rose);
+            color: #FFF;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .combo-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .combo-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .combo-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .combo-features li {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .combo-features li i {
+            color: #25D366;
+        }
+
+        /* ==========================================================================
+           INTERACTIVE PRICE ESTIMATOR
+           ========================================================================== */
+        .calculator-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            max-width: 750px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .calc-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .calc-select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .calc-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background: var(--bg-main);
+            padding: 0.6rem 0.9rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .total-box {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .total-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0.3rem 0;
+        }
+
+        /* ==========================================================================
+           INSTAGRAM LOOKBOOK & GALLERY
+           ========================================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .insta-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .insta-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .insta-card-header {
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-main);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .insta-badge {
+            background: var(--accent-soft);
+            color: var(--text-dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .insta-content {
+            padding: 2rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #FFFFFF 100%);
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .insta-content i {
+            font-size: 2.5rem;
+            color: var(--accent-rose);
+            margin-bottom: 0.8rem;
+        }
+
+        .btn-insta {
+            display: inline-block;
+            background: var(--text-dark);
+            color: #FFF !important;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+        }
+
+        /* ==========================================================================
+           CLIENT REVIEWS & WHATSAPP ROUTING
+           ========================================================================== */
+        .reviews-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .review-form-card, .approved-reviews-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            background: var(--bg-main);
+            outline: none;
+        }
+
+        .star-rating-select {
+            display: flex;
+            gap: 10px;
+            font-size: 1.5rem;
+            color: #FFD700;
+            cursor: pointer;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 420px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .single-review {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+        }
+
+        .single-review .stars {
+            color: #FFD700;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .single-review p {
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .single-review .reviewer {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           LOCATION & MAP SECTION
+           ========================================================================== */
+        .location-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .location-info {
+            max-width: 600px;
+            margin: 0 auto 1.8rem;
+        }
+
+        .location-address {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            background: var(--text-dark);
+            color: #FFF;
+            padding: 3rem 5% 1.5rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            color: var(--accent-soft);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            color: #BBB;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-title">Glossy Tips</span>
+            <span class="logo-subtitle">By Arpita Patra</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#estimator">Price Estimator</a></li>
+            <li><a href="#gallery">Lookbook</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#location">Location</a></li>
+        </ul>
+        <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20a%20nail%20appointment!" target="_blank" class="btn-wp">
+            <i class="fab font-awesome-flag fa-whatsapp"></i> Book Now
+        </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <span class="hero-badge">✨ Certified Professional Nail Artist</span>
+        <h1>Luxury Gel & Acrylic Nail Extensions in Patuli</h1>
+        <p>Elevate your everyday look with long-lasting, customized, and flawless nail art tailored just for you in Kolkata.</p>
+        <div class="hero-buttons">
+            <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20an%20appointment!" target="_blank" class="btn-primary">
+                Book via WhatsApp
+            </a>
+            <a href="#gallery" class="btn-secondary">Explore Lookbook</a>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE ARPITA -->
+    <section id="about">
+        <div class="section-header">
+            <h2>Why Choose Arpita?</h2>
+            <p>Your hands deserve safe, hygienic, and stunning artistry.</p>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Certified Artist</h3>
+                <p>Professionally trained in modern gel, acrylic, and 3D nail styling techniques.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fas fa-pump-medical"></i>
+                <h3>100% Sanitized</h3>
+                <p>All tools are sanitized for every single client to ensure complete safety.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fas fa-comments"></i>
+                <h3>Hindi & Bengali</h3>
+                <p>Feel completely comfortable discussing your nail design in Hindi or Bengali.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fas fa-gem"></i>
+                <h3>Safe Products</h3>
+                <p>Uses non-damaging, MMA-free premium nail extension gels and polishes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & COMBOS -->
+    <section id="services" style="background: var(--bg-secondary);">
+        <div class="section-header">
+            <h2>Special Packages & Menu</h2>
+            <p>Transparent pricing tailored for every occasion.</p>
+        </div>
+        <div class="combo-grid">
+            <div class="combo-card">
+                <div>
+                    <h3>Basic Gel Extensions</h3>
+                    <div class="combo-price">₹699</div>
+                    <ul class="combo-features">
+                        <li><i class="fas fa-check"></i> Full set soft gel extensions</li>
+                        <li><i class="fas fa-check"></i> Single/Dual color gel polish</li>
+                        <li><i class="fas fa-check"></i> High-gloss top coat</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20Basic%20Gel%20Extensions" target="_blank" class="btn-primary" style="text-align: center;">Book Package</a>
+            </div>
+
+            <div class="combo-card popular">
+                <span class="popular-badge">Most Popular</span>
+                <div>
+                    <h3>Bridal & Glam Combo</h3>
+                    <div class="combo-price">₹1,199</div>
+                    <ul class="combo-features">
+                        <li><i class="fas fa-check"></i> Full set acrylic / gel extensions</li>
+                        <li><i class="fas fa-check"></i> Custom 3D charms & glitter art</li>
+                        <li><i class="fas fa-check"></i> Cuticle oil massage treatment</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20I%20want%20to%20book%20Bridal%20Glam%20Combo" target="_blank" class="btn-primary" style="text-align: center;">Book Package</a>
+            </div>
+
+            <div class="combo-card">
+                <div>
+                    <h3>Besties Duo Offer</h3>
+                    <div class="combo-price">₹899 <small style="font-size:0.9rem; font-weight:normal;">/ person</small></div>
+                    <ul class="combo-features">
+                        <li><i class="fas fa-check"></i> Book together with a friend</li>
+                        <li><i class="fas fa-check"></i> Any gel overlay or extensions</li>
+                        <li><i class="fas fa-check"></i> Free accent nail design each</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/916291187416?text=Hi%20Arpita,%20we%20want%20to%20book%20Besties%20Duo%20Offer" target="_blank" class="btn-primary" style="text-align: center;">Book Duo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICE ESTIMATOR -->
+    <section id="estimator">
+        <div class="section-header">
+            <h2>Interactive Price Estimator</h2>
+            <p>Calculate your estimated bill before booking!</p>
+        </div>
+        <div class="calculator-container">
+            <div class="calc-group">
+                <label for="base-service">Select Base Service:</label>
+                <select id="base-service" class="calc-select" onchange="calculatePrice()">
+                    <option value="699">Gel Overlay on Natural Nails (₹699)</option>
+                    <option value="899" selected>Soft Gel Nail Extensions (₹899)</option>
+                    <option value="1099">Full Acrylic Extensions Set (₹1,099)</option>
+                </select>
+            </div>
+
+            <div class="calc-group">
+                <label>Add-ons & Nail Art:</label>
+                <div class="calc-checkboxes">
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="150" class="addon-check" onchange="calculatePrice()"> French Tips (+₹150)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="200" class="addon-check" onchange="calculatePrice()"> Chrome/Glitter Finish (+₹200)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="250" class="addon-check" onchange="calculatePrice()"> 3D Charms / Rhinestones (+₹250)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="199" class="addon-check" onchange="calculatePrice()"> Safe Extension Removal (+₹199)
+                    </label>
+                </div>
+            </div>
+
+            <div class="total-box">
+                <div style="font-size:0.9rem; color: var(--text-muted);">Estimated Total Amount:</div>
+                <div class="total-amount" id="total-price">₹899</div>
+                <a id="calc-wp-btn" href="https://wa.me/916291187416?text=Hi%20Arpita,%20my%20estimated%20booking%20is%20₹899" target="_blank" class="btn-primary" style="display:inline-block; margin-top:0.8rem;">
+                    Confirm & Book Estimate via WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY / LOOKBOOK (INSTAGRAM INTEGRATED) -->
+    <section id="gallery" style="background: var(--bg-secondary);">
+        <div class="section-header">
+            <h2>Live Instagram Lookbook</h2>
+            <p>Real work posted directly from @glossytips_by_arpita</p>
+        </div>
+        <div class="gallery-grid">
+
+            <!-- REELS -->
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div>
+                <div class="insta-content">
+                    <i class="fab fa-instagram"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Glitter & Chrome Art Process</p>
+                    <a href="https://www.instagram.com/reel/DeunKUFR3zU/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div>
+                <div class="insta-content">
+                    <i class="fab fa-instagram"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Soft Gel Extension Transformation</p>
+                    <a href="https://www.instagram.com/reel/Det8Np-hVL5/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div>
+                <div class="insta-content">
+                    <i class="fab fa-instagram"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Bridal Nail Art Reveal</p>
+                    <a href="https://www.instagram.com/reel/Det24zrt4sl/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div>
+                <div class="insta-content">
+                    <i class="fab fa-instagram"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">3D Charm Details</p>
+                    <a href="https://www.instagram.com/reel/DetpX_NtwrH/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div>
+                <div class="insta-content">
+                    <i class="fab fa-instagram"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Pastel Ombre Finish</p>
+                    <a href="https://www.instagram.com/reel/DetTCCeh-lb/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div>
+                <div class="insta-content">
+                    <i class="fab fa-instagram"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Cat-Eye Gel Polish Magic</p>
+                    <a href="https://www.instagram.com/reel/Dem4RYUx7t8/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <!-- PHOTOS -->
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div>
+                <div class="insta-content">
+                    <i class="fas fa-camera"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Classic French Gel Tips</p>
+                    <a href="https://www.instagram.com/p/Detx64fgR0i/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div>
+                <div class="insta-content">
+                    <i class="fas fa-camera"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Rose Gold Glitter Overlay</p>
+                    <a href="https://www.instagram.com/p/DetuWQmAVfq/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div>
+                <div class="insta-content">
+                    <i class="fas fa-camera"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Nude Pink Almond Extensions</p>
+                    <a href="https://www.instagram.com/p/Deth0qRgV_m/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div>
+                <div class="insta-content">
+                    <i class="fas fa-camera"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Matte Maroon Festive Nails</p>
+                    <a href="https://www.instagram.com/p/DetbXllAamr/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div>
+                <div class="insta-content">
+                    <i class="fas fa-camera"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Minimalist Line Art</p>
+                    <a href="https://www.instagram.com/p/DetXJMpAfO0/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div>
+                <div class="insta-content">
+                    <i class="fas fa-camera"></i>
+                    <p style="font-size:0.85rem; font-weight:600;">Lavender Aesthetic Gel Set</p>
+                    <a href="https://www.instagram.com/p/Deq0uBhgfKW/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="reviews">
+        <div class="section-header">
+            <h2>Client Testimonials</h2>
+            <p>Loved by clients across Patuli, Jadavpur, and EM Bypass</p>
+        </div>
+        <div class="reviews-wrapper">
+            
+            <!-- SUBMIT REVIEW FORM -->
+            <div class="review-form-card">
+                <h3>Leave a Review</h3>
+                <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;">Reviews are verified via WhatsApp before appearing live.</p>
+                
+                <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" id="rev-name" class="form-control" placeholder="e.g. Sneha Roy">
+                </div>
+
+                <div class="form-group">
+                    <label>Service Received:</label>
+                    <input type="text" id="rev-service" class="form-control" placeholder="e.g. Gel Extensions & French Tips">
+                </div>
+
+                <div class="form-group">
+                    <label>Your Feedback:</label>
+                    <textarea id="rev-comment" class="form-control" rows="3" placeholder="Share your experience..."></textarea>
+                </div>
+
+                <button type="button" onclick="sendReviewToWhatsApp()" class="btn-primary" style="width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Send Review via WhatsApp
+                </button>
+            </div>
+
+            <!-- APPROVED DISPLAY REVIEWS -->
+            <div class="approved-reviews-card">
+                <h3>Verified Feedback</h3>
+                <div class="reviews-list">
+                    <div class="single-review">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Arpita is so detailed and patient! My gel extensions lasted for over 3 weeks without any chipping."</p>
+                        <div class="reviewer">Pooja Sharma — Patuli, Kolkata</div>
+                    </div>
+
+                    <div class="single-review">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Super hygienic space in Patuli. Loved how comfortable she made me feel discussing designs in Hindi!"</p>
+                        <div class="reviewer">Riya Banerjee — Jadavpur</div>
+                    </div>
+
+                    <div class="single-review">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Got my bridal nails done from Glossy Tips. Everyone at the wedding complimented the 3D charm details!"</p>
+                        <div class="reviewer">Ananya Sen — Garia</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LOCATION & LANDMARK GUIDE -->
+    <section id="location">
+        <div class="location-container">
+            <h2 style="margin-bottom: 0.5rem;">Visit the Studio</h2>
+            <div class="location-info">
+                <div class="location-address">📍 J 212, Patuli, Kolkata, WB - 700094</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Clean, cozy home studio space with personalized appointments.</p>
+            </div>
+            <a href="https://maps.app.goo.gl/gxM7sjESBiMgWpqJ6?g_st=ac" target="_blank" class="btn-primary" style="display: inline-block;">
+                <i class="fas fa-location-arrow"></i> Open Directions in Google Maps
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>Glossy Tips by Arpita Patra</h3>
+        <p>Certified Nail Artist | J 212, Patuli, Kolkata - 700094</p>
+        <div class="footer-bottom">
+            &copy; 2026 Glossy Tips by Arpita Patra. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        function calculatePrice() {
+            let basePrice = parseInt(document.getElementById('base-service').value);
+            let checkboxes = document.querySelectorAll('.addon-check');
+            let addonTotal = 0;
+
+            checkboxes.forEach(cb => {
+                if(cb.checked) {
+                    addonTotal += parseInt(cb.value);
+                }
+            });
+
+            let grandTotal = basePrice + addonTotal;
+            document.getElementById('total-price').innerText = "₹" + grandTotal;
+            
+            // Update WhatsApp link text with selected price
+            let wpBtn = document.getElementById('calc-wp-btn');
+            wpBtn.href = "https://wa.me/916291187416?text=Hi%20Arpita,%20I%20used%20the%20website%20estimator%20and%20would%20like%20to%20book%20a%20session%20estimated%20at%20₹" + grandTotal;
+        }
+
+        function sendReviewToWhatsApp() {
+            let name = document.getElementById('rev-name').value;
+            let service = document.getElementById('rev-service').value;
+            let comment = document.getElementById('rev-comment').value;
+
+            if(!name || !comment) {
+                alert('Please enter your name and review comment before sending.');
+                return;
+            }
+
+            let message = `Hi Arpita! I would like to submit a review for Glossy Tips:\n\nName: ${name}\nService: ${service || 'Nail Extensions'}\nReview: ${comment}`;
+            let encodedMsg = encodeURIComponent(message);
+            window.open(`https://wa.me/916291187416?text=${encodedMsg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
