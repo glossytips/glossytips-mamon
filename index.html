@@ -380,21 +380,45 @@
             margin: 0.2rem 0;
         }
 
-        /* GALLERY / DYNAMIC LOOKBOOK SHOWCASE */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
+        /* ================= HORIZONTAL SCROLL SUBSECTIONS ================= */
+        .gallery-subsection {
+            margin-bottom: 2.5rem;
         }
 
-        @media (min-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.2rem;
-            }
+        .subsection-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.4rem;
+        }
+
+        .scroll-row {
+            display: flex;
+            gap: 1.2rem;
+            overflow-x: auto;
+            padding: 0.5rem 0.2rem 1.2rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .scroll-row::-webkit-scrollbar {
+            height: 8px;
+        }
+        .scroll-row::-webkit-scrollbar-track {
+            background: #F0D5E1;
+            border-radius: 10px;
+        }
+        .scroll-row::-webkit-scrollbar-thumb {
+            background: var(--accent-rose);
+            border-radius: 10px;
         }
 
         .insta-card {
+            flex: 0 0 240px;
+            scroll-snap-align: start;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
@@ -407,7 +431,7 @@
         .insta-media-container {
             position: relative;
             width: 100%;
-            height: 180px;
+            height: 220px;
             background: var(--bg-secondary);
             overflow: hidden;
         }
@@ -717,14 +741,27 @@
         </div>
     </section>
 
-    <!-- DYNAMIC LOOKBOOK GALLERY -->
+    <!-- LOOKBOOK PORTFOLIO SUBSECTIONS -->
     <section id="gallery" style="background: var(--bg-secondary);">
         <div class="section-header">
             <h2>Lookbook Portfolio</h2>
-            <p>Stunning nail artistry and video showcases by Arpita Patra</p>
+            <p>Scroll horizontally to explore our video reels and photo designs!</p>
         </div>
-        <div class="gallery-grid" id="dynamic-gallery">
-            <!-- Dynamic cards will auto-populate here -->
+
+        <!-- SUBSECTION 1: VIDEOS -->
+        <div class="gallery-subsection">
+            <h3 class="subsection-title"><i class="fas fa-video" style="color: var(--accent-rose);"></i> Video Transformation Reels</h3>
+            <div class="scroll-row" id="video-gallery-row">
+                <!-- Dynamic video cards auto-populate here -->
+            </div>
+        </div>
+
+        <!-- SUBSECTION 2: PHOTOS -->
+        <div class="gallery-subsection">
+            <h3 class="subsection-title"><i class="fas fa-camera" style="color: var(--accent-rose);"></i> Photo Gallery & Designs</h3>
+            <div class="scroll-row" id="image-gallery-row">
+                <!-- Dynamic photo cards auto-populate here -->
+            </div>
         </div>
     </section>
 
@@ -863,40 +900,29 @@
             faqItem.classList.toggle('active');
         }
 
-        // SMART DYNAMIC MEDIA LOADER WITH "MAKEOVER" GENERATOR
+        // DYNAMIC MEDIA LOADER WITH FILE-NAME TITLES + 'MAKEOVER' SUFFIX
         document.addEventListener("DOMContentLoaded", function () {
-            const galleryGrid = document.getElementById('dynamic-gallery');
-            const maxFilesToCheck = 20; // Scans up to nail20.mp4 and nail20.jpg
+            const videoRow = document.getElementById('video-gallery-row');
+            const imageRow = document.getElementById('image-gallery-row');
+            const maxFilesToCheck = 20;
 
-            // Word Pools for Dynamic Video Titles
-            const videoPrefixes = ["Festive", "Royal", "Custom", "Luxury", "Glitter", "Minimalist", "3D Charm", "Chic"];
-            const videoStyles = ["Gel Glam", "Bridal Art", "Pastel Style", "Acrylic Finish", "Studio Polish", "Nail Elegance"];
-
-            // Generates dynamic wording ending with 'Makeover'
-            function generateVideoTitle(index) {
-                const prefix = videoPrefixes[(index - 1) % videoPrefixes.length];
-                const style = videoStyles[(index - 1) % videoStyles.length];
-                return `${prefix} ${style} Makeover`;
+            // Helper to clean file names into pretty UI titles
+            function formatFileNameToTitle(fileName) {
+                let nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.')) || fileName;
+                return nameWithoutExt
+                    .replace(/[-_]/g, ' ')
+                    .replace(/\b\w/g, char => char.toUpperCase());
             }
 
-            // Image Titles List
-            const imageTitles = [
-                "Custom Gel Artistry",
-                "Classic French Elegance",
-                "Royal Bridal Set",
-                "Pastel Luxe Finish",
-                "Minimalist Nude Art"
-            ];
-
-            // 1. Scan & Load Videos dynamically (nail1.mp4, nail2.mp4, nail3.mp4...)
+            // 1. Load Videos in Video Row (Appends " Makeover" to formatted file name)
             for (let i = 1; i <= maxFilesToCheck; i++) {
-                const videoUrl = `nail${i}.mp4`;
-                const req = new XMLHttpRequest();
-                req.open('HEAD', videoUrl, false);
-                try {
-                    req.send();
-                    if (req.status === 200) {
-                        const dynamicTitle = generateVideoTitle(i);
+                (function(index) {
+                    const videoUrl = `nail${index}.mp4`;
+                    const video = document.createElement('video');
+                    video.src = videoUrl;
+                    video.onloadeddata = function() {
+                        const baseTitle = formatFileNameToTitle(videoUrl);
+                        const videoTitle = `${baseTitle} Makeover`;
                         const card = document.createElement('div');
                         card.className = 'insta-card';
                         card.innerHTML = `
@@ -904,34 +930,42 @@
                                 <video src="${videoUrl}" controls muted playsinline></video>
                             </div>
                             <div class="insta-card-footer">
-                                <span class="insta-title">${dynamicTitle}</span>
+                                <span class="insta-title">${videoTitle}</span>
                             </div>
                         `;
-                        galleryGrid.appendChild(card);
-                    }
-                } catch(e) {}
+                        videoRow.appendChild(card);
+                    };
+                })(i);
             }
 
-            // 2. Scan & Load Images dynamically (nail1.jpg, nail2.jpg...)
-            for (let i = 1; i <= maxFilesToCheck; i++) {
-                const imageUrl = `nail${i}.jpg`;
+            // 2. Load Photos in Photo Row (Displays clean file name)
+            const photoList = [
+                "Soft pink nude nails.jpg",
+                "nail1.jpg",
+                "nail2.jpg",
+                "nail3.jpg",
+                "nail4.jpg",
+                "nail5.jpg"
+            ];
+
+            photoList.forEach(function(imageUrl) {
                 const img = new Image();
                 img.onload = function() {
-                    const title = imageTitles[i - 1] || "Custom Gel Artistry";
+                    const cleanTitle = formatFileNameToTitle(imageUrl);
                     const card = document.createElement('div');
                     card.className = 'insta-card';
                     card.innerHTML = `
                         <div class="insta-media-container">
-                            <img src="${imageUrl}" alt="${title}">
+                            <img src="${imageUrl}" alt="${cleanTitle}">
                         </div>
                         <div class="insta-card-footer">
-                            <span class="insta-title">${title}</span>
+                            <span class="insta-title">${cleanTitle}</span>
                         </div>
                     `;
-                    galleryGrid.appendChild(card);
+                    imageRow.appendChild(card);
                 };
                 img.src = imageUrl;
-            }
+            });
         });
     </script>
 </body>
