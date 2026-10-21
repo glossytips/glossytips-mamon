@@ -380,7 +380,7 @@
             margin: 0.2rem 0;
         }
 
-        /* GALLERY / LOCAL PORTFOLIO SHOWCASE */
+        /* GALLERY / DYNAMIC LOOKBOOK SHOWCASE */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -717,72 +717,14 @@
         </div>
     </section>
 
-    <!-- GALLERY / LOOKBOOK (3 Videos & 3 Photos) -->
+    <!-- DYNAMIC LOOKBOOK GALLERY -->
     <section id="gallery" style="background: var(--bg-secondary);">
         <div class="section-header">
             <h2>Lookbook Portfolio</h2>
             <p>Stunning nail artistry and video showcases by Arpita Patra</p>
         </div>
-        <div class="gallery-grid">
-            <!-- Video 1 (nail1.mp4) -->
-            <div class="insta-card">
-                <div class="insta-media-container">
-                    <video src="nail1.mp4" controls muted playsinline></video>
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Festive Glam & Glitter</span>
-                </div>
-            </div>
-
-            <!-- Video 2 (nail2.mp4) -->
-            <div class="insta-card">
-                <div class="insta-media-container">
-                    <video src="nail2.mp4" controls muted playsinline></video>
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Pastel Gel Transformation</span>
-                </div>
-            </div>
-
-            <!-- Video 3 (nail3.mp4) -->
-            <div class="insta-card">
-                <div class="insta-media-container">
-                    <video src="nail3.mp4" controls muted playsinline></video>
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">3D Charm Artistry</span>
-                </div>
-            </div>
-
-            <!-- Photo 1 (nail1.jpg) -->
-            <div class="insta-card">
-                <div class="insta-media-container">
-                    <img src="nail1.jpg" alt="Custom Gel Nail Design 1">
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Custom Gel Artistry</span>
-                </div>
-            </div>
-
-            <!-- Photo 2 (nail2.jpg) -->
-            <div class="insta-card">
-                <div class="insta-media-container">
-                    <img src="nail2.jpg" alt="Custom Gel Nail Design 2">
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Classic French Elegance</span>
-                </div>
-            </div>
-
-            <!-- Photo 3 (nail3.jpg) -->
-            <div class="insta-card">
-                <div class="insta-media-container">
-                    <img src="nail3.jpg" alt="Custom Gel Nail Design 3">
-                </div>
-                <div class="insta-card-footer">
-                    <span class="insta-title">Royal Bridal Set</span>
-                </div>
-            </div>
+        <div class="gallery-grid" id="dynamic-gallery">
+            <!-- Dynamic cards will auto-populate here -->
         </div>
     </section>
 
@@ -920,6 +862,55 @@
             const faqItem = button.parentElement;
             faqItem.classList.toggle('active');
         }
+
+        // DYNAMIC MEDIA SCANNER & LOADER
+        document.addEventListener("DOMContentLoaded", function () {
+            const galleryGrid = document.getElementById('dynamic-gallery');
+            const maxFilesToCheck = 15; // Checks up to nail15.mp4 and nail15.jpg
+
+            // 1. Scan for Video Files (nail1.mp4, nail2.mp4...)
+            for (let i = 1; i <= maxFilesToCheck; i++) {
+                const videoUrl = `nail${i}.mp4`;
+                const req = new XMLHttpRequest();
+                req.open('HEAD', videoUrl, false);
+                try {
+                    req.send();
+                    if (req.status === 200) {
+                        const card = document.createElement('div');
+                        card.className = 'insta-card';
+                        card.innerHTML = `
+                            <div class="insta-media-container">
+                                <video src="${videoUrl}" controls muted playsinline></video>
+                            </div>
+                            <div class="insta-card-footer">
+                                <span class="insta-title">Process & Art Reel ${i}</span>
+                            </div>
+                        `;
+                        galleryGrid.appendChild(card);
+                    }
+                } catch(e) {}
+            }
+
+            // 2. Scan for Image Files (nail1.jpg, nail2.jpg...)
+            for (let i = 1; i <= maxFilesToCheck; i++) {
+                const imageUrl = `nail${i}.jpg`;
+                const img = new Image();
+                img.onload = function() {
+                    const card = document.createElement('div');
+                    card.className = 'insta-card';
+                    card.innerHTML = `
+                        <div class="insta-media-container">
+                            <img src="${imageUrl}" alt="Custom Gel Art ${i}">
+                        </div>
+                        <div class="insta-card-footer">
+                            <span class="insta-title">Custom Gel Artistry ${i}</span>
+                        </div>
+                    `;
+                    galleryGrid.appendChild(card);
+                };
+                img.src = imageUrl;
+            }
+        });
     </script>
 </body>
 </html>
