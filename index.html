@@ -863,12 +863,29 @@
             faqItem.classList.toggle('active');
         }
 
-        // DYNAMIC MEDIA SCANNER & LOADER
+        // CLEAN DYNAMIC MEDIA LOADER WITH CURATED TITLES
         document.addEventListener("DOMContentLoaded", function () {
             const galleryGrid = document.getElementById('dynamic-gallery');
-            const maxFilesToCheck = 15; // Checks up to nail15.mp4 and nail15.jpg
+            const maxFilesToCheck = 15;
 
-            // 1. Scan for Video Files (nail1.mp4, nail2.mp4...)
+            // Curated Title Lists
+            const videoTitles = [
+                "Festive Glam & Glitter",
+                "Pastel Gel Transformation",
+                "3D Charm Artistry",
+                "Studio Process Reel",
+                "Glitter Overlay Showcase"
+            ];
+
+            const imageTitles = [
+                "Custom Gel Artistry",
+                "Classic French Elegance",
+                "Royal Bridal Set",
+                "Pastel Luxe Finish",
+                "Minimalist Nude Art"
+            ];
+
+            // 1. Scan for Videos (nail1.mp4, nail2.mp4...)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 const videoUrl = `nail${i}.mp4`;
                 const req = new XMLHttpRequest();
@@ -876,6 +893,7 @@
                 try {
                     req.send();
                     if (req.status === 200) {
+                        const title = videoTitles[i - 1] || "Signature Reel Showcase";
                         const card = document.createElement('div');
                         card.className = 'insta-card';
                         card.innerHTML = `
@@ -883,7 +901,7 @@
                                 <video src="${videoUrl}" controls muted playsinline></video>
                             </div>
                             <div class="insta-card-footer">
-                                <span class="insta-title">Process & Art Reel ${i}</span>
+                                <span class="insta-title">${title}</span>
                             </div>
                         `;
                         galleryGrid.appendChild(card);
@@ -891,19 +909,20 @@
                 } catch(e) {}
             }
 
-            // 2. Scan for Image Files (nail1.jpg, nail2.jpg...)
+            // 2. Scan for Images (nail1.jpg, nail2.jpg...)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 const imageUrl = `nail${i}.jpg`;
                 const img = new Image();
                 img.onload = function() {
+                    const title = imageTitles[i - 1] || "Custom Gel Artistry";
                     const card = document.createElement('div');
                     card.className = 'insta-card';
                     card.innerHTML = `
                         <div class="insta-media-container">
-                            <img src="${imageUrl}" alt="Custom Gel Art ${i}">
+                            <img src="${imageUrl}" alt="${title}">
                         </div>
                         <div class="insta-card-footer">
-                            <span class="insta-title">Custom Gel Artistry ${i}</span>
+                            <span class="insta-title">${title}</span>
                         </div>
                     `;
                     galleryGrid.appendChild(card);
