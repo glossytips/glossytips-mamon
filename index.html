@@ -900,7 +900,7 @@
             faqItem.classList.toggle('active');
         }
 
-        // PERFECT ASCENDING ORDER LOADER FOR VIDEOS & PHOTOS
+        // BULLETPROOF ASCENDING ORDER LOADER FOR VIDEOS & PHOTOS
         document.addEventListener("DOMContentLoaded", function () {
             const videoRow = document.getElementById('video-gallery-row');
             const imageRow = document.getElementById('image-gallery-row');
@@ -912,7 +912,6 @@
             let checkedImages = 0;
 
             function checkRenderCompletion() {
-                // Once all checks are done, sort both arrays in strict ascending order (1, 2, 3...)
                 if (checkedVideos === maxFilesToCheck) {
                     loadedVideos.sort((a, b) => a.index - b.index);
                     loadedVideos.forEach(item => videoRow.appendChild(item.card));
@@ -923,27 +922,44 @@
                 }
             }
 
-            // 1. Scan Videos (nail1.mp4, nail2.mp4...)
+            function addMediaCard(row, url, title, isVideo, index) {
+                const card = document.createElement('div');
+                card.className = 'insta-card';
+                if (isVideo) {
+                    card.innerHTML = `
+                        <div class="insta-media-container">
+                            <video src="${url}" controls muted playsinline></video>
+                        </div>
+                        <div class="insta-card-footer">
+                            <span class="insta-title">${title}</span>
+                        </div>
+                    `;
+                    loadedVideos.push({ index: index, card: card });
+                    checkedVideos++;
+                    checkRenderCompletion();
+                } else {
+                    card.innerHTML = `
+                        <div class="insta-media-container">
+                            <img src="${url}" alt="${title}">
+                        </div>
+                        <div class="insta-card-footer">
+                            <span class="insta-title">${title}</span>
+                        </div>
+                    `;
+                    loadedImages.push({ index: index, card: card });
+                    checkedImages++;
+                    checkRenderCompletion();
+                }
+            }
+
+            // 1. Scan Videos
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const videoUrl = `nail${index}.mp4`;
                     const video = document.createElement('video');
                     video.src = videoUrl;
                     video.onloadeddata = function() {
-                        const videoTitle = `Makeover Video ${index}`;
-                        const card = document.createElement('div');
-                        card.className = 'insta-card';
-                        card.innerHTML = `
-                            <div class="insta-media-container">
-                                <video src="${videoUrl}" controls muted playsinline></video>
-                            </div>
-                            <div class="insta-card-footer">
-                                <span class="insta-title">${videoTitle}</span>
-                            </div>
-                        `;
-                        loadedVideos.push({ index: index, card: card });
-                        checkedVideos++;
-                        checkRenderCompletion();
+                        addMediaCard(videoRow, videoUrl, `Makeover Video ${index}`, true, index);
                     };
                     video.onerror = function() {
                         checkedVideos++;
@@ -952,31 +968,24 @@
                 })(i);
             }
 
-            // 2. Scan Photos (nail1.jpg, nail2.jpg...)
+            // 2. Scan Photos (Bulletproof check for cached or fast-loading images)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const imageUrl = `nail${index}.jpg`;
                     const img = new Image();
-                    img.onload = function() {
-                        const imageTitle = `Nail Design ${index}`;
-                        const card = document.createElement('div');
-                        card.className = 'insta-card';
-                        card.innerHTML = `
-                            <div class="insta-media-container">
-                                <img src="${imageUrl}" alt="${imageTitle}">
-                            </div>
-                            <div class="insta-card-footer">
-                                <span class="insta-title">${imageTitle}</span>
-                            </div>
-                        `;
-                        loadedImages.push({ index: index, card: card });
-                        checkedImages++;
-                        checkRenderCompletion();
-                    };
-                    img.onerror = function() {
-                        checkedImages++;
-                        checkRenderCompletion();
-                    };
+                    img.src = imageUrl;
+                    
+                    if (img.complete && img.naturalHeight !== 0) {
+                        addMediaCard(imageRow, imageUrl, `Nail Design ${index}`, false, index);
+                    } else {
+                        img.onload = function() {
+                            addMediaCard(imageRow, imageUrl, `Nail Design ${index}`, false, index);
+                        };
+                        img.onerror = function() {
+                            checkedImages++;
+                            checkRenderCompletion();
+                        };
+                    }
                 })(i);
             }
         });
