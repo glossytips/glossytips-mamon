@@ -900,7 +900,7 @@
             faqItem.classList.toggle('active');
         }
 
-        // DYNAMIC MEDIA LOADER WITH FILE-NAME TITLES + 'MAKEOVER' SUFFIX
+        // FULLY AUTOMATED DYNAMIC MEDIA LOADER (VIDEOS & PHOTOS)
         document.addEventListener("DOMContentLoaded", function () {
             const videoRow = document.getElementById('video-gallery-row');
             const imageRow = document.getElementById('image-gallery-row');
@@ -914,7 +914,7 @@
                     .replace(/\b\w/g, char => char.toUpperCase());
             }
 
-            // 1. Load Videos in Video Row (Appends " Makeover" to formatted file name)
+            // 1. Fully Automated Video Scanner (nail1.mp4, nail2.mp4...) -> Appends " Makeover"
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const videoUrl = `nail${index}.mp4`;
@@ -938,17 +938,11 @@
                 })(i);
             }
 
-            // 2. Load Photos in Photo Row (Displays clean file name)
-            const photoList = [
-                "Soft pink nude nails.jpg",
-                "nail1.jpg",
-                "nail2.jpg",
-                "nail3.jpg",
-                "nail4.jpg",
-                "nail5.jpg"
-            ];
-
-            photoList.forEach(function(imageUrl) {
+            // 2. Fully Automated Photo Scanner (Supports nail1.jpg, nail2.jpg, OR descriptive names like "Soft pink nude nails.jpg")
+            const customPhotoNames = ["Soft pink nude nails.jpg"]; // Add any custom descriptive photo filenames here if needed
+            
+            // Scan custom descriptive photos first
+            customPhotoNames.forEach(function(imageUrl) {
                 const img = new Image();
                 img.onload = function() {
                     const cleanTitle = formatFileNameToTitle(imageUrl);
@@ -966,6 +960,29 @@
                 };
                 img.src = imageUrl;
             });
+
+            // Scan sequential photos (nail1.jpg, nail2.jpg, nail3.jpg...) automatically
+            for (let i = 1; i <= maxFilesToCheck; i++) {
+                (function(index) {
+                    const imageUrl = `nail${index}.jpg`;
+                    const img = new Image();
+                    img.onload = function() {
+                        const cleanTitle = formatFileNameToTitle(imageUrl);
+                        const card = document.createElement('div');
+                        card.className = 'insta-card';
+                        card.innerHTML = `
+                            <div class="insta-media-container">
+                                <img src="${imageUrl}" alt="${cleanTitle}">
+                            </div>
+                            <div class="insta-card-footer">
+                                <span class="insta-title">${cleanTitle}</span>
+                            </div>
+                        `;
+                        imageRow.appendChild(card);
+                    };
+                    img.src = imageUrl;
+                })(i);
+            }
         });
     </script>
 </body>
