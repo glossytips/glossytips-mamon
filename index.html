@@ -24,7 +24,7 @@
             --text-muted: #6B5B68;
             --card-bg: #FFFFFF;
             --border-color: #F0D5E1;
-            --shadow-soft: 0 8px 24px rgba(224, 160, 160, 0.12);
+            --shadow-soft: 0 6px 18px rgba(224, 160, 160, 0.1);
             --radius-lg: 20px;
             --radius-md: 12px;
         }
@@ -380,7 +380,7 @@
             margin: 0.2rem 0;
         }
 
-        /* GALLERY / LOOKBOOK - FORCED 2-COLUMN GRID ON MOBILE */
+        /* GALLERY / LOOKBOOK - RICH MEDIA CARDS */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -390,7 +390,7 @@
         @media (min-width: 768px) {
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
+                gap: 1.2rem;
             }
         }
 
@@ -401,52 +401,71 @@
             overflow: hidden;
             box-shadow: var(--shadow-soft);
             transition: transform 0.3s;
-        }
-
-        .insta-card:hover { transform: translateY(-3px); }
-
-        .insta-card-header {
-            padding: 0.45rem 0.6rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--bg-main);
-            font-size: 0.65rem;
-            font-weight: 600;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .insta-badge {
-            background: var(--accent-soft);
-            color: var(--text-dark);
-            padding: 0.1rem 0.3rem;
-            border-radius: 5px;
-            font-size: 0.55rem;
-        }
-
-        .insta-content {
-            padding: 1rem 0.5rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, #FFFFFF 100%);
-            min-height: 120px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
 
-        .insta-content i { font-size: 1.6rem; color: var(--accent-rose); margin-bottom: 0.3rem; }
-        .insta-content p { font-size: 0.72rem; font-weight: 600; margin-bottom: 0.3rem; line-height: 1.2; }
+        .insta-card:hover { transform: translateY(-2px); }
+
+        .insta-media-container {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #F3D9E2 0%, #E8B4C8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .insta-media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .play-overlay {
+            position: absolute;
+            background: rgba(43, 33, 41, 0.6);
+            color: #FFF;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .insta-card-footer {
+            padding: 0.6rem;
+            background: var(--card-bg);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .insta-title {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
         .btn-insta {
             display: inline-block;
             background: var(--text-dark);
             color: #FFF !important;
-            padding: 0.25rem 0.6rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 50px;
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             font-weight: 600;
-            margin-top: 0.3rem;
+            margin: 0 auto;
         }
 
         /* REVIEWS */
@@ -677,19 +696,75 @@
         </div>
     </section>
 
-    <!-- GALLERY / LOOKBOOK (Top 6 Highlights) -->
+    <!-- GALLERY / LOOKBOOK (Rich Media Preview Cards) -->
     <section id="gallery" style="background: var(--bg-secondary);">
         <div class="section-header">
             <h2>Live Instagram Lookbook</h2>
             <p>Real work posted directly from @glossytips_by_arpita</p>
         </div>
         <div class="gallery-grid">
-            <div class="insta-card"><div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div><div class="insta-content"><i class="fab fa-instagram"></i><p>Glitter & Chrome Art</p><a href="https://www.instagram.com/reel/DeunKUFR3zU/" target="_blank" class="btn-insta">Watch Reel</a></div></div>
-            <div class="insta-card"><div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div><div class="insta-content"><i class="fab fa-instagram"></i><p>Soft Gel Transformation</p><a href="https://www.instagram.com/reel/Det8Np-hVL5/" target="_blank" class="btn-insta">Watch Reel</a></div></div>
-            <div class="insta-card"><div class="insta-card-header"><span>Reel Showcase</span><span class="insta-badge">Video</span></div><div class="insta-content"><i class="fab fa-instagram"></i><p>Bridal Nail Art Reveal</p><a href="https://www.instagram.com/reel/Det24zrt4sl/" target="_blank" class="btn-insta">Watch Reel</a></div></div>
-            <div class="insta-card"><div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div><div class="insta-content"><i class="fas fa-camera"></i><p>Classic French Tips</p><a href="https://www.instagram.com/p/Detx64fgR0i/" target="_blank" class="btn-insta">View Post</a></div></div>
-            <div class="insta-card"><div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div><div class="insta-content"><i class="fas fa-camera"></i><p>Rose Gold Overlay</p><a href="https://www.instagram.com/p/DetuWQmAVfq/" target="_blank" class="btn-insta">View Post</a></div></div>
-            <div class="insta-card"><div class="insta-card-header"><span>Photo Post</span><span class="insta-badge">Photo</span></div><div class="insta-content"><i class="fas fa-camera"></i><p>Lavender Aesthetic Set</p><a href="https://www.instagram.com/p/Deq0uBhgfKW/" target="_blank" class="btn-insta">View Post</a></div></div>
+            <div class="insta-card">
+                <div class="insta-media-container">
+                    <i class="fab fa-instagram" style="font-size: 2.5rem; color: #E0A0A0;"></i>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-title">Glitter & Chrome Art</span>
+                    <a href="https://www.instagram.com/reel/DeunKUFR3zU/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-media-container">
+                    <i class="fab fa-instagram" style="font-size: 2.5rem; color: #E0A0A0;"></i>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-title">Soft Gel Transformation</span>
+                    <a href="https://www.instagram.com/reel/Det8Np-hVL5/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-media-container">
+                    <i class="fab fa-instagram" style="font-size: 2.5rem; color: #E0A0A0;"></i>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-title">Bridal Nail Art Reveal</span>
+                    <a href="https://www.instagram.com/reel/Det24zrt4sl/" target="_blank" class="btn-insta">Watch Reel</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-media-container" style="background: linear-gradient(135deg, #FFFDF9 0%, #F0D5E1 100%);">
+                    <i class="fas fa-camera" style="font-size: 2rem; color: #E0A0A0;"></i>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-title">Classic French Tips</span>
+                    <a href="https://www.instagram.com/p/Detx64fgR0i/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-media-container" style="background: linear-gradient(135deg, #FFFDF9 0%, #F0D5E1 100%);">
+                    <i class="fas fa-camera" style="font-size: 2rem; color: #E0A0A0;"></i>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-title">Rose Gold Overlay</span>
+                    <a href="https://www.instagram.com/p/DetuWQmAVfq/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
+
+            <div class="insta-card">
+                <div class="insta-media-container" style="background: linear-gradient(135deg, #FFFDF9 0%, #F0D5E1 100%);">
+                    <i class="fas fa-camera" style="font-size: 2rem; color: #E0A0A0;"></i>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-title">Lavender Aesthetic Set</span>
+                    <a href="https://www.instagram.com/p/Deq0uBhgfKW/" target="_blank" class="btn-insta">View Post</a>
+                </div>
+            </div>
         </div>
     </section>
 
