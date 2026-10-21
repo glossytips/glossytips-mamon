@@ -900,13 +900,13 @@
             faqItem.classList.toggle('active');
         }
 
-        // FULLY AUTOMATED "SET IT AND FORGET IT" MEDIA LOADER
+        // AUTO-SCANNER: "Makeover Video X" for videos, Clean titles for photos
         document.addEventListener("DOMContentLoaded", function () {
             const videoRow = document.getElementById('video-gallery-row');
             const imageRow = document.getElementById('image-gallery-row');
-            const maxFilesToCheck = 30; // Scans nail1 to nail30 automatically
+            const maxFilesToCheck = 30; // Scans up to 30 files automatically
 
-            // Cleans file names into pretty titles
+            // Cleans file names into pretty titles for photos
             function formatFileNameToTitle(fileName) {
                 let nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.')) || fileName;
                 return nameWithoutExt
@@ -914,15 +914,14 @@
                     .replace(/\b\w/g, char => char.toUpperCase());
             }
 
-            // 1. Auto-Scan Videos (nail1.mp4, nail2.mp4...) -> Filename + Makeover
+            // 1. Auto-Scan Videos (nail1.mp4 -> "Makeover Video 1", etc.)
             for (let i = 1; i <= maxFilesToCheck; i++) {
                 (function(index) {
                     const videoUrl = `nail${index}.mp4`;
                     const video = document.createElement('video');
                     video.src = videoUrl;
                     video.onloadeddata = function() {
-                        const baseTitle = formatFileNameToTitle(videoUrl);
-                        const videoTitle = `${baseTitle} Makeover`;
+                        const videoTitle = `Makeover Video ${index}`;
                         const card = document.createElement('div');
                         card.className = 'insta-card';
                         card.innerHTML = `
